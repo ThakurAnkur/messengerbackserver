@@ -1,15 +1,19 @@
 const getUser = require("../../database/operations/getUser").getUser;
-const password = require("../../utils/password").password;
+const password = require("../../utils/password").passwordManager;
 
 exports.verifyUser = function (req, res, next) {
     const findQuery = {
         password: req.params.password,
         phoneNumber: req.params.phoneNumber
     }
-    getUser(findQuery, function (result, docs) {
-        const responseData = {};
-        responseData.docs = docs;
-        responseData.result = result;
-        res.send(JSON.stringify(responseData));
+    getUser(findQuery, function (dbResponse) {
+        let message = "";
+        if(dbResponse.valid){
+            message = message + JSON.stringify(dbResponse.data);
+        }
+        else {
+            message = "Invalid User Name or Password";
+        }
+        res.send(message);
     })
 }

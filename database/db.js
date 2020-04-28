@@ -1,6 +1,4 @@
 const MongoClient = require('mongodb').MongoClient;
-
-
 const username = "ankurthakur";
 const password = "hRKiqNsLnw74Xxb";
 
@@ -10,3 +8,4 @@ function spawnConnection() {
 }
 
 exports.spawnConnection = spawnConnection;
+exports.dbUri = uri;

@@ -1,6 +1,6 @@
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
-const someOtherPlaintextPassword = 'not_bacon';
+const bcrypt = require("bcrypt");
 
+saltRounds = 10;
 exports.passwordManager = {
     encryptPassword: function (simplePassword, callback) {
         bcrypt.hash(simplePassword, saltRounds, function (err, hash) {
