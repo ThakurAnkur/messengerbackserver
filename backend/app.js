@@ -24,7 +24,7 @@ app.use(session({
   secret: "Shh, its a secret!",
   store: new MongoStore({
     url: dbUri,
-    dbName: 'test-app'
+    dbName: 'users'
   })
 }));
 app.use(logger('dev'));
